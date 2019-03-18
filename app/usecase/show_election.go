@@ -7,11 +7,12 @@ import (
 
 //ShowElectionResponse response model for this usecase
 type ShowElectionResponse struct {
-	IsElectionExist bool
-	IsUserValid     bool
-	Election        election.Model
-	Candidates      []candidate.Model
-	Error           error
+	IsValid    bool
+	IsError    bool
+	Election   election.Model
+	Candidates []candidate.Model
+	Message    string
+	Error      error
 }
 
 //ShowElectionRequest request model for this usecase
@@ -22,7 +23,7 @@ type ShowElectionRequest struct {
 
 //InputBoundary gateway from delivery mech. to usecase
 type InputBoundary interface {
-	ShowElection(electionID int64) ShowElectionResponse
+	ShowElection(input ShowElectionRequest) ShowElectionResponse
 }
 
 //OutputBoundary gateway from usecase to delivery mech.

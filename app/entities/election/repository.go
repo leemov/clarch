@@ -1,5 +1,5 @@
 package election
 
-type Repo interface {
+type Repository interface {
 	GetByID(ID int64) (Model, error)
 }
