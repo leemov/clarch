@@ -8,13 +8,21 @@ import (
 	"strings"
 
 	"github.com/clarch/handler/cli"
+	"github.com/jmoiron/sqlx"
+	_ "github.com/lib/pq"
 )
 
 func main() {
 	//all technology init here
+	db, err := sqlx.Connect("postgres", "user=postgres dbname=election sslmode=disable password=postgres host=localhost")
+	if err != nil {
+		panic(err)
+	}
 
+	defer db.Close()
 	controller := cli.CliController{
-	//any dependency for controller injected here
+		DB: db,
+		//any dependency for controller injected here
 	}
 
 	for true {

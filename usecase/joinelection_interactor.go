@@ -32,6 +32,14 @@ type JoinElectionInteractor struct {
 }
 
 //NewJoinElectionInteractor Factory for JoinElection
+// func NewJoinElectionInteractor(election postgres.PQElection, candidate hardcoded.HCCandidate, voter hardcoded.HCVoter) JoinElectionInteractor {
+// 	return JoinElectionInteractor{
+// 		election:  election,
+// 		candidate: candidate,
+// 		voter:     voter,
+// 	}
+// }
+
 func NewJoinElectionInteractor(election hardcoded.HCElection, candidate hardcoded.HCCandidate, voter hardcoded.HCVoter) JoinElectionInteractor {
 	return JoinElectionInteractor{
 		election:  election,

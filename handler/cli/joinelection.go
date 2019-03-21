@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/jmoiron/sqlx"
+
 	"github.com/clarch/infrastructure/hardcoded"
 
 	"github.com/clarch/state/joinelection"
@@ -81,6 +83,7 @@ func (pst JoinElectionPresenter) Present(usecaseResp usecase.JoinElectionRespons
 }
 
 type CliController struct {
+	DB *sqlx.DB //actually this should be interface // so its independent of any framework
 }
 
 func (cc CliController) CJoinElection(reqModel JoinElectionRequest) {
@@ -101,6 +104,9 @@ func (cc CliController) CJoinElection(reqModel JoinElectionRequest) {
 	hcVoter := hardcoded.HCVoter{}
 	hcCandidate := hardcoded.HCCandidate{}
 	hcElection := hardcoded.HCElection{}
+	// pqElection := postgres.PQElection{
+	// 	DB: cc.DB,
+	// }
 	ucase := usecase.NewJoinElectionInteractor(hcElection, hcCandidate, hcVoter)
 	output := ucase.JoinElection(usecase.JoinElectionRequest{
 		ElectionID: eID,
