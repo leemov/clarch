@@ -20,10 +20,3 @@ type JoinElectionRequest struct {
 	VoterID    string
 	ElectionID string
 }
-
-type IController interface {
-	CJoinElection(reqModel JoinElectionRequest)
-}
-
-type CliController struct {
-}

@@ -34,6 +34,7 @@ func main() {
 
 		switch optionSelected {
 		case 1:
+			//Getting user input
 			fmt.Println("Input your VoterID : ")
 			voterID, _ := reader.ReadString('\n')
 			voterID = strings.TrimSuffix(voterID, "\n")
@@ -41,6 +42,7 @@ func main() {
 			electionID, _ := reader.ReadString('\n')
 			electionID = strings.TrimSuffix(electionID, "\n")
 
+			//Calling the controller
 			controller.CJoinElection(cli.JoinElectionRequest{
 				VoterID:    voterID,
 				ElectionID: electionID,

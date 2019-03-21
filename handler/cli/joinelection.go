@@ -80,6 +80,9 @@ func (pst JoinElectionPresenter) Present(usecaseResp usecase.JoinElectionRespons
 	}
 }
 
+type CliController struct {
+}
+
 func (cc CliController) CJoinElection(reqModel JoinElectionRequest) {
 	//conversion from controller request model into interactor request model
 	//all user input validation goes here too.
