@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/clarch/controller/cli"
+	"github.com/clarch/handler/cli"
 )
 
 func main() {
