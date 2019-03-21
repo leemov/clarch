@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/jmoiron/sqlx"
-
 	"github.com/clarch/infrastructure/hardcoded"
 
 	"github.com/clarch/state/joinelection"
@@ -80,10 +78,6 @@ func (pst JoinElectionPresenter) Present(usecaseResp usecase.JoinElectionRespons
 		pst.ViewModel.IsError = false
 		pst.ViewModel.ElectionNationality = usecaseResp.Election.Nationality
 	}
-}
-
-type CliController struct {
-	DB *sqlx.DB //actually this should be interface // so its independent of any framework
 }
 
 func (cc CliController) CJoinElection(reqModel JoinElectionRequest) {
