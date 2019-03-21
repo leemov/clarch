@@ -5,4 +5,5 @@ type Model struct {
 	ID          int64
 	Name        string
 	Nationality string
+	Age         int
 }

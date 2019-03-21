@@ -6,5 +6,5 @@ type Repository interface {
 	GetByID(candidateID int64) (Model, error)
 	Save(candidate *Model) error
 	Update(candidate *Model) error
-	UpdateProperties(mapProperties map[string]string) error
+	UpdateProperties(ID int64, mapProperties map[string]string) error
 }
