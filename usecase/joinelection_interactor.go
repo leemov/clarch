@@ -5,6 +5,7 @@ import (
 	"github.com/clarch/entities/election"
 	"github.com/clarch/entities/voter"
 	"github.com/clarch/infrastructure/hardcoded"
+	"github.com/clarch/infrastructure/postgres"
 	state "github.com/clarch/state/joinelection"
 )
 
@@ -40,7 +41,7 @@ type JoinElectionInteractor struct {
 // 	}
 // }
 
-func NewJoinElectionInteractor(election hardcoded.HCElection, candidate hardcoded.HCCandidate, voter hardcoded.HCVoter) JoinElectionInteractor {
+func NewJoinElectionInteractor(election postgres.PQElection, candidate hardcoded.HCCandidate, voter hardcoded.HCVoter) JoinElectionInteractor {
 	return JoinElectionInteractor{
 		election:  election,
 		candidate: candidate,

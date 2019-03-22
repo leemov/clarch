@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/clarch/infrastructure/hardcoded"
+	"github.com/clarch/infrastructure/postgres"
 	"github.com/clarch/state/joinelection"
 
 	"github.com/clarch/usecase"
@@ -105,11 +106,11 @@ func (cc RestController) RESTJoinElection(w http.ResponseWriter, r *http.Request
 
 	hcVoter := hardcoded.HCVoter{}
 	hcCandidate := hardcoded.HCCandidate{}
-	hcElection := hardcoded.HCElection{}
-	// pqElection := postgres.PQElection{
-	// 	DB: cc.DB,
-	// }
-	ucase := usecase.NewJoinElectionInteractor(hcElection, hcCandidate, hcVoter)
+	// hcElection := hardcoded.HCElection{}
+	pqElection := postgres.PQElection{
+		DB: cc.DB,
+	}
+	ucase := usecase.NewJoinElectionInteractor(pqElection, hcCandidate, hcVoter)
 	output := ucase.JoinElection(usecase.JoinElectionRequest{
 		ElectionID: eID,
 		VoterID:    vID,
