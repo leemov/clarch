@@ -55,3 +55,7 @@ on project folder go to `bin/cli` and run command on your terminal.
 - for REST HTTP application .
 on project folder , go to `bin/rest` and run command on your terminal.
 `go run rest.go`.
+
+### database 
+if you want to use database, you can find the structure and sample record for postgreSQL in files folder
+
