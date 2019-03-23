@@ -15,7 +15,9 @@ Currently, action (Business logic) provided :
   <img src="https://github.com/leemov/clarch/blob/master/files/Clean%20Arch%20Diagram.png">
 </p>
 
-The main principle of Clean architecture is `Separating Concern`
+The main principle of Clean architecture is `Separating Concern` by layering our application 
+According to the concept we can implement more than 4 layers ( Entities, Usecase, Handler and Infrastructure )
+But at least 1 layer consist of business logic.
 
 #### Entities : 
 on this project, entities goes to `entities` folder
