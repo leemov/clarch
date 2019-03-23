@@ -12,11 +12,12 @@ import (
 	"github.com/clarch/usecase"
 )
 
-// any dependency for presenter injected here
+//JoinElectionPresenter is struct to inject dependencies to Present function
 type JoinElectionPresenter struct {
 	ViewModel *JoinElectionResponse
 }
 
+//Present is implementation for usecase present function to fit rest HTTP response
 func (pst JoinElectionPresenter) Present(usecaseResp usecase.JoinElectionResponse) {
 	// you can render what you want here. you can even get aditional data from external resource here (with external dependency injected)
 	// you can format your view model need here
@@ -74,6 +75,7 @@ func (pst JoinElectionPresenter) Present(usecaseResp usecase.JoinElectionRespons
 	}
 }
 
+//RESTJoinElection is controller for join election for rest service
 func (cc RestController) RESTJoinElection(w http.ResponseWriter, r *http.Request) {
 	//conversion from controller request model into interactor request model
 	//all user input validation goes here too.

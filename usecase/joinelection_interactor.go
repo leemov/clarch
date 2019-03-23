@@ -9,6 +9,8 @@ import (
 	state "github.com/clarch/state/joinelection"
 )
 
+// In this layer, we will implement usecase
+
 //Business logic :
 // 1. Check if election ID exist
 // 2. Check if voter ID exist

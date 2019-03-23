@@ -10,6 +10,8 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
+// You can download the DB schema on /files folder. I use postgreSQL
+
 type PQElection struct {
 	//actually should be interface so it could be loosely coupled
 	DB *sqlx.DB

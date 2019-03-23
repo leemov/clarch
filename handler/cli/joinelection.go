@@ -5,17 +5,19 @@ import (
 	"strconv"
 
 	"github.com/clarch/infrastructure/hardcoded"
+	"github.com/clarch/infrastructure/postgres"
 
 	"github.com/clarch/state/joinelection"
 
 	"github.com/clarch/usecase"
 )
 
-// any dependency for presenter injected here
+//JoinElectionPresenter is struct to inject dependencies to Present function
 type JoinElectionPresenter struct {
 	ViewModel *JoinElectionResponse
 }
 
+//Present implement usecase preset function for CLI output
 func (pst JoinElectionPresenter) Present(usecaseResp usecase.JoinElectionResponse) {
 	// you can render what you want here. you can even get aditional data from external resource here (with external dependency injected)
 	// you can format your view model need here
@@ -80,6 +82,7 @@ func (pst JoinElectionPresenter) Present(usecaseResp usecase.JoinElectionRespons
 	}
 }
 
+//CJoinElection will be controller for join election CLI
 func (cc CliController) CJoinElection(reqModel JoinElectionRequest) {
 	//conversion from controller request model into interactor request model
 	//all user input validation goes here too.
@@ -97,11 +100,11 @@ func (cc CliController) CJoinElection(reqModel JoinElectionRequest) {
 
 	hcVoter := hardcoded.HCVoter{}
 	hcCandidate := hardcoded.HCCandidate{}
-	hcElection := hardcoded.HCElection{}
-	// pqElection := postgres.PQElection{
-	// 	DB: cc.DB,
-	// }
-	ucase := usecase.NewJoinElectionInteractor(hcElection, hcCandidate, hcVoter)
+	// hcElection := hardcoded.HCElection{} // you can swap using hcElection but have to change the interactor's constructor
+	pqElection := postgres.PQElection{
+		DB: cc.DB,
+	}
+	ucase := usecase.NewJoinElectionInteractor(pqElection, hcCandidate, hcVoter)
 	output := ucase.JoinElection(usecase.JoinElectionRequest{
 		ElectionID: eID,
 		VoterID:    vID,
@@ -117,6 +120,7 @@ func (cc CliController) CJoinElection(reqModel JoinElectionRequest) {
 	JoinElectionCLIRender(viewModel)
 }
 
+//JoinElectionCLIRender is function to simply output to terminal using fmt
 func JoinElectionCLIRender(viewModel *JoinElectionResponse) {
 	if viewModel.IsError {
 		fmt.Println("[ERROR]", viewModel.Message)
