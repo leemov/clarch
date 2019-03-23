@@ -1,5 +1,6 @@
 # clarch
-This is my approach to apply clean architecture concept on golang
+This is my approach to apply clean architecture concept on golang.
+My goal is to keep application business logic as clean as possible.
 
 You can read the Clean Architecture concept proposed by Robert C. Martin here : 
 https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
