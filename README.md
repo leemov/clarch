@@ -41,7 +41,10 @@ on my approach, i also implement presenter interface that accept response model 
 #### Resource implementation
 This is the outer most layer.
 this layer responsible to specify framework / technology used to implement entities's method.
-You can find this on `bin` folder.
+Technology implementation lies on `infrastructure` folder.
+
+All init will be called on application binary and injected trough controller.
+
 
 ### To run this application : 
 go to bin folder.
